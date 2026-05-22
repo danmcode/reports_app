@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    protected $table = 'products';
+    protected $primaryKey = 'ProductId';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'ProductId',
+        'Name',
+        'Reference',
+    ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'ProductId', 'ProductId');
+    }
+}
